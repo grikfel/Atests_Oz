@@ -93,12 +93,62 @@ def test_empty_gender(monkeypatch):
 
     assert result == None
 
-# Проверка, тип гендера None
-def test_type_gender(monkeypatch):
+# Проверка, тип гендера None с работой
+def test_type_gender_none_with_work(monkeypatch):
     monkeypatch.setattr("main.all_superheroes", change_superheroes)
 
     with pytest.raises(AttributeError):
         tallest_superhero(None, True)
+
+# Проверка, тип гендера None без работы
+def test_type_gender_none_without_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(None, False)
+
+# Проверка, тип гендера True без работы
+def test_type_gender_true_without_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(True, False)
+
+# Проверка, тип гендера True c работjq
+def test_type_gender_true_with_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(True, True)
+
+# Проверка, тип гендера False без работы
+def test_type_gender_false_without_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(False, False)
+
+# Проверка, тип гендера False c работой
+def test_type_gender_false_with_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(False, True)
+
+# Проверка, тип гендера число с работой
+def test_type_gender_123_with_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(123, True)
+
+# Проверка, тип гендера число без работы
+def test_type_gender_123_without_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(AttributeError):
+        tallest_superhero(123, False)
+
 
 # Проверка, типы данных в гендере и работе не соответствуют заявленным
 def test_type_gender_and_work(monkeypatch):
@@ -106,3 +156,11 @@ def test_type_gender_and_work(monkeypatch):
 
     with pytest.raises(AttributeError):
         tallest_superhero(123, "123")
+
+# Значение для работы не указано
+def test_empty_work(monkeypatch):
+    monkeypatch.setattr("main.all_superheroes", change_superheroes)
+
+    with pytest.raises(TypeError):
+        tallest_superhero("Male", )
+
