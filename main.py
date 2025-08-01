@@ -17,7 +17,7 @@ def tallest_superhero(gender: str, work: bool):
     suitable_heroes = []
 
     for hero in heroes_list:
-        # Получаем пол героя
+        # Получаем пол героя.
         appearance = hero.get("appearance", {})
         hero_gender = appearance.get("gender", "")
         hero_gender = hero_gender.lower()
