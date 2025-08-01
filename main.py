@@ -16,24 +16,23 @@ def tallest_superhero(gender: str, work: bool):
     # Создаем пустой список для подходящих героев
     suitable_heroes = []
 
-    # Проходимся по каждому герою
     for hero in heroes_list:
-        # Пытаемся получить пол героя
+        # Получаем пол героя
         appearance = hero.get("appearance", {})
         hero_gender = appearance.get("gender", "")
         hero_gender = hero_gender.lower()
 
-        # Пытаемся получить информацию о работе героя
+        # Получаем информацию о работе героя
         work_info = hero.get("work", {})
         occupation = work_info.get("occupation", "")
-        occupation = occupation.strip()  # убираем лишние пробелы
+        occupation = occupation.strip()
         hero_has_work = False
         if occupation != "":
             hero_has_work = True
 
         # Сравниваем пол и наличие работы
         if hero_gender == gender.lower() and hero_has_work == work:
-            # Пытаемся получить рост героя
+            # Получаем рост героя
             height_list = appearance.get("height", [])
             if len(height_list) > 1:
                 height_str = height_list[1]  # например, "185 cm"
